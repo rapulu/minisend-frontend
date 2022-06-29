@@ -1,20 +1,15 @@
-import EmailComponentVue from "@/components/EmailComponent.vue";
-import HomeComponentVue from "@/components/HomeComponent.vue";
-import RecipientEmailsComponentVue from "@/components/RecipientEmailsComponent.vue";
+import EmailComponent from "../views/EmailComponent.vue";
+import HomeComponent from "../views/HomeComponent.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
     path: '/',
-    component: HomeComponentVue
+    component: HomeComponent
   },
   {
-    path: '/view-email',
-    component: EmailComponentVue
-  },
-  {
-    path: '/recipient-emails',
-    component: RecipientEmailsComponentVue
+    path: '/email/:id',
+    component: EmailComponent
   }
 ]
 
