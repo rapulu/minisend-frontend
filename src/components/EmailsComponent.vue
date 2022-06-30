@@ -1,27 +1,27 @@
 <template>
  <div>
-   <div class="row">
+   <div class="row" v-if="stats != null">
      <div class="col">
        <div class="card" style="width: 18rem;">
          <div class="card-body">
            <h5 class="card-title">Total email</h5>
-           <p class="card-text">25</p>
+           <p class="card-text">{{ stats.total_email }}</p>
          </div>
        </div>
      </div>
      <div class="col">
        <div class="card" style="width: 18rem;">
          <div class="card-body">
-           <h5 class="card-title">Total Sent</h5>
-           <p class="card-text">25</p>
+           <h5 class="card-title">Total email sent</h5>
+           <p class="card-text">{{ stats.total_email_sent }}</p>
          </div>
        </div>
      </div>
      <div class="col">
        <div class="card" style="width: 18rem;">
          <div class="card-body">
-           <h5 class="card-title">Total Failed</h5>
-           <p class="card-text">25</p>
+           <h5 class="card-title">Total failed email</h5>
+           <p class="card-text">{{ stats.total_email_failed}}</p>
          </div>
        </div>
      </div>
@@ -39,7 +39,7 @@
    <table class="table">
      <thead>
        <tr>
-         <th scope="col">Reciprient</th>
+         <th scope="col">Recipient</th>
          <th scope="col">Sender</th>
          <th scope="col">Subject</th>
          <th scope="col">Status</th>
@@ -48,8 +48,8 @@
      </thead>
      <tbody class="table-group-divider">
        <tr v-for="email in emails" :key="email.id">
-         <td >{{ email.from }}</td>
-         <td>{{ email.to }}</td>
+         <td >{{ email.sender }}</td>
+         <td>{{ email.recipient }}</td>
          <td>{{ email.subject }}</td>
          <td>{{ email.status ?'Sent':'Failed'}}</td>
          <td>
@@ -67,12 +67,13 @@
 </template>
 <script>
 export default {
- props: ['emails','filters'],
+ props: ['emails','filters', 'stats'],
  emit: ['set-filters'],
  setup(props, context) {
    const search = (s) => {
      context.emit('set-filters', {
-       s
+       s,
+       page: 1
      })
    }
  

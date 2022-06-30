@@ -2,12 +2,8 @@
   <div class="container">
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
-        <li class="nav-item">
-          <router-link to="/email-view" active-class="active" class="nav-link">View single</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/recipient-emails" active-class="active" class="nav-link">Emails of recipient</router-link>
-        </li>
+        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
       </ul>
     </header>
   </div>
